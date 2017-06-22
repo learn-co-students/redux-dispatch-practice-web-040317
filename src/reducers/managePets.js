@@ -8,10 +8,7 @@ export function managePets(state = {pets: []}, action){
         pets: [...state.pets, action.pet]
       })
     case 'REMOVE_PET':
-      const removeIndex = state.pets.findIndex(pet => pet.id === action.id)
-      let check = [...state.pets]
-      check.splice(removeIndex, 1)
-      return {pets: check};
+      return {pets: [...state.pets.filter(pet => pet.id !== action.id)]}
     default:
       return state;
   }
